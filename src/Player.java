@@ -2,13 +2,9 @@ import java.util.ArrayList;
 
 public interface Player {
 
-	ArrayList<Card> hand = new ArrayList<>();
-
 	public Card playCard(Card curCard);
 
-	public default void drawCard(Card c){
-		hand.add(c);
-	}
+	public void drawCard(Card c);
 
 	public Card.Color pickColor();
 

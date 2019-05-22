@@ -1,9 +1,23 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HumanPlayer implements Player {
 
+	ArrayList<Card> hand = new ArrayList<>();
+
+	private String name;
+
+	public HumanPlayer(){
+		this.name = "Human Player";
+	}
+
+	public HumanPlayer(String name){
+		this.name = name;
+	}
+
 	public Card playCard(Card curCard){
-		System.out.println("Playing on top of "+curCard);
+		System.out.println("It's your turn, "+name()+"!");
+		System.out.println("Playing on top of "+curCard+": ");
 		for(int i = 0; i < hand.size(); i++){
 			System.out.println("Card "+i+": "+hand.get(i));
 		}
@@ -26,16 +40,20 @@ public class HumanPlayer implements Player {
 		else return Card.Color.NONE;
 	}
 
-	public boolean hasWon(){
-		return hand.isEmpty();
-	}
-
 	public void invalidMove(){
 		System.out.println("That move was invalid!");
 	}
 
 	public String name(){
-		return "Human Player";
+		return name;
+	}
+
+	public void drawCard(Card c){
+		hand.add(c);
+	}
+
+	public boolean hasWon(){
+		return hand.isEmpty();
 	}
 
 }
