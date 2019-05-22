@@ -61,7 +61,8 @@ public class Deck {
 	}
 
 	public boolean validPlay(Card c){
-		return (c.color==lastPlayed.color||c.type==lastPlayed.type||c.type==Card.Type.WILD||c.type==Card.Type.WILD_DRAW_FOUR);
+		if(c.type==Card.Type.WILD||c.type==Card.Type.WILD_DRAW_FOUR)return(c.color!=Card.Color.NONE);
+		return (c.color==lastPlayed.color||c.type==lastPlayed.type);
 	}
 
 }
